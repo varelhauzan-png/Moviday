@@ -215,7 +215,7 @@ const ARTICLE_LINKS = {
       });
     }
     function openInfoModal(movieId, mode) {
-      const movie = MOVIES[movieId]; if (!movie) return;
+      const movie = MOVIES[movieId]; if (!movie) return; if (ARTICLE_LINKS[movieId]) { window.location.href = ARTICLE_LINKS[movieId]; return; }
       const modal = document.getElementById('info-modal');
       document.getElementById('modal-tag').textContent = mode === 'trailer' ? 'TRAILER RESMI' : 'REVIEW FILM';
       document.getElementById('modal-title').textContent = movie.title;
