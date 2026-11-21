@@ -133,7 +133,14 @@
       transporter3: { id: 'transporter3', title: 'Transporter 3 (2008)', year: '2008', genres: ['Action', 'Drama'], duration: '104 Menit', rating: '6.1', isLatest: true,    poster: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Frank Martin harus mengantar Valentina, putri pejabat Ukraina yang diculik, dari Marseille ke Odessa. Kalau telat, gelang di tangannya meledak.', reviewHeadline: 'Klasik! Frank Martin Dengan Gelang Bom!', reviewBody: ['Transporter 3 adalah film action klasik Jason Statham. Mobil kencang, aksi brutal, dan misi yang mustahil.', 'Wajib nonton buat yang kangen film action tahun 2000-an. Skor 6.1/10 dari MOVIEDAY.ID!'] },
       johnWick4: { id: 'johnWick4', title: 'John Wick: Chapter 4 (2023)', year: '2023', genres: ['Action', 'Drama'], duration: '169 Menit', rating: '7.7', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'John Wick menemukan jalan untuk mengalahkan High Table. Dia harus melawan musuh baru dari New York, Osaka, Berlin sampai Paris.', reviewHeadline: 'Mahakarya Action! Adegan Tangga Paris Legendaris!', reviewBody: ['John Wick 4 adalah puncak dari seri John Wick. Aksi gun-fu paling gila, dari Osaka sampai Paris.', 'Durasi 169 menit terasa cepat karena aksinya non-stop. Skor 7.7/10 dari MOVIEDAY.ID!'] },
     };
-
+const ARTICLE_LINKS = {
+  theMongoose: 'artikel-5.html',
+  apocalypseZ: 'artikel-6.html',
+  extraction2020: 'artikel-7.html',
+  mutiny: 'artikel-8.html',
+  transporter3: 'artikel-9.html',
+  johnWick4: 'artikel-10.html'
+};
     const MOVIE_PILIHAN_IDS = ['heartOfTheBeast','youCanSeeEverything','theOdyssey','spiderManBrandNewDay','theMongoose','apocalypseZ','extraction2020','mutiny','transporter3','johnWick4'];
 
     let activeGenre = 'ALL';
@@ -202,7 +209,7 @@
       Object.values(MOVIES).forEach((movie) => {
         if (movie.id === currentPlayerMovieId) return;
         const item = document.createElement('div'); item.className = 'group rounded-xl bg-obsidian/80 hover:bg-cream/[0.06] border border-cream/10 p-2.5 flex gap-3 transition-all';
-        const actionHtml = movie.isLatest ? `<div class="flex flex-wrap items-center gap-1.5 mt-2"><button type="button" onclick="openInfoModal('${movie.id}', 'trailer')" class="px-2 py-1 rounded-md bg-crimson text-cream text-[10px] font-bold hover:bg-red-700 transition-colors">LIHAT TRAILER</button><button type="button" onclick="openInfoModal('${movie.id}', 'review')" class="px-2 py-1 rounded-md bg-cream/15 text-cream text-[10px] font-bold hover:bg-cream/25 transition-colors">LIHAT REVIEW</button></div><p class="text-[10px] text-cream/70 mt-1.5 font-medium">NONTON RESMI DI: <span class="text-crimson font-bold">Netflix, Disney+, Bioskop</span></p>` : `<button type="button" onclick="openPlayerPage('${movie.id}')" class="mt-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-crimson text-cream text-[10px] font-extrabold hover:bg-red-700 transition-colors"><iconify-icon icon="lucide:play"></iconify-icon> NONTON SEKARANG</button>`;
+        const actionHtml = movie.isLatest ? `<div class="flex flex-wrap items-center gap-1.5 mt-2"><button type="button" onclick="if(ARTICLE_LINKS['${movie.id}']){window.location.href=ARTICLE_LINKS['${movie.id}'];return;}openInfoModal('${movie.id}', 'trailer')" class="px-2 py-1 rounded-md bg-crimson text-cream text-[10px] font-bold hover:bg-red-700 transition-colors">LIHAT TRAILER</button><button type="button" onclick="openInfoModal('${movie.id}', 'review')" class="px-2 py-1 rounded-md bg-cream/15 text-cream text-[10px] font-bold hover:bg-cream/25 transition-colors">LIHAT REVIEW</button></div><p class="text-[10px] text-cream/70 mt-1.5 font-medium">NONTON RESMI DI: <span class="text-crimson font-bold">Netflix, Disney+, Bioskop</span></p>` : `<button type="button" onclick="openPlayerPage('${movie.id}')" class="mt-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-crimson text-cream text-[10px] font-extrabold hover:bg-red-700 transition-colors"><iconify-icon icon="lucide:play"></iconify-icon> NONTON SEKARANG</button>`;
         item.innerHTML = `<img src="${movie.poster}" onerror="this.onerror=null;this.src='https://placehold.co/320x200/181818/FFF2CC?text=MOVIEDAY';" alt="${movie.title}" class="w-24 sm:w-28 h-20 rounded-lg object-cover shrink-0 border border-cream/10" /><div class="flex-1 min-w-0"><h4 class="text-xs sm:text-sm font-extrabold text-cream truncate group-hover:text-crimson transition-colors">${movie.title}</h4><p class="text-[11px] text-cream/65 mt-0.5">${movie.year} • ${movie.genres.join(', ')}</p>${actionHtml}</div>`;
         container.appendChild(item);
       });
