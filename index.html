@@ -1,1095 +1,235 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3505006534368282"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3505006534368282" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOVIEDAY.ID — Nonton Film & Info Rilis Resmi</title>
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Iconify -->
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-  <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#0A0A0A',
-            cream: '#FFF2CC',
-            crimson: '#E50914',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-        },
-      },
-    };
+    tailwind.config = { theme: { extend: { colors: { obsidian: '#0A0A0A', cream: '#FFF2CC', crimson: '#E50914' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } };
   </script>
-
   <style>
-    html, body {
-      background-color: #0A0A0A;
-      color: #FFF2CC;
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    /* Custom scrollbar ala Netflix */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0A0A0A;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #2a2620;
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #E50914;
-    }
-
-    .hero-vignette {
-      background:
-        linear-gradient(90deg, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.78) 45%, rgba(10, 10, 10, 0.25) 100%),
-        linear-gradient(0deg, #0A0A0A 0%, rgba(10, 10, 10, 0.4) 30%, rgba(10, 10, 10, 0.65) 100%);
-    }
-
-    .card-hover {
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-6px) scale(1.015);
-      box-shadow: 0 18px 36px -12px rgba(229, 9, 20, 0.35);
-    }
+    html, body { background-color: #0A0A0A; color: #FFF2CC; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #2a2620; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #E50914; }
+    .hero-vignette { background: linear-gradient(90deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.78) 45%, rgba(10,10,10,0.25) 100%), linear-gradient(0deg, #0A0A0A 0%, rgba(10,10,10,0.4) 30%, rgba(10,10,10,0.65) 100%); }
+    .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px) scale(1.015); box-shadow: 0 18px 36px -12px rgba(229,9,20,0.35); }
   </style>
 </head>
 <body class="bg-obsidian text-cream min-h-screen flex flex-col selection:bg-crimson selection:text-cream">
 
-  <!-- ================= HEADER / NAVBAR ================= -->
   <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-gradient-to-b from-obsidian/95 via-obsidian/80 to-transparent backdrop-blur-md border-b border-cream/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
-      
-      <!-- Logo & Desktop Menu -->
       <div class="flex items-center gap-6 lg:gap-10">
         <button type="button" onclick="navigateHome('ALL')" class="flex items-center gap-2.5 text-left focus:outline-none group">
-          <span class="w-8 h-8 rounded-lg bg-crimson flex items-center justify-center shadow-lg shadow-crimson/40 group-hover:scale-105 transition-transform">
-            <iconify-icon icon="lucide:play" class="text-cream text-lg"></iconify-icon>
-          </span>
-          <span class="text-xl sm:text-2xl font-black tracking-tighter text-crimson">
-            MOVIEDAY<span class="text-cream">.ID</span>
-          </span>
+          <span class="w-8 h-8 rounded-lg bg-crimson flex items-center justify-center shadow-lg shadow-crimson/40 group-hover:scale-105 transition-transform"><iconify-icon icon="lucide:play" class="text-cream text-lg"></iconify-icon></span>
+          <span class="text-xl sm:text-2xl font-black tracking-tighter text-crimson">MOVIEDAY<span class="text-cream">.ID</span></span>
         </button>
-
-        <!-- Menu Desktop: Home, Horor, Action, Komedi, Drama, Sci-Fi -->
         <nav aria-label="Menu Utama" class="hidden md:flex items-center gap-1 lg:gap-2">
-          <button type="button" data-genre="ALL" onclick="filterByGenre('ALL')"
-            class="nav-link active-nav px-3 py-2 rounded-lg text-sm font-semibold text-cream bg-crimson/20 border border-crimson/50 transition-all">
-            Home
-          </button>
-          <button type="button" data-genre="Horor" onclick="filterByGenre('Horor')"
-            class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">
-            Horor
-          </button>
-          <button type="button" data-genre="Action" onclick="filterByGenre('Action')"
-            class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">
-            Action
-          </button>
-          <button type="button" data-genre="Komedi" onclick="filterByGenre('Komedi')"
-            class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">
-            Komedi
-          </button>
-          <button type="button" data-genre="Drama" onclick="filterByGenre('Drama')"
-            class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">
-            Drama
-          </button>
-          <button type="button" data-genre="Sci-Fi" onclick="filterByGenre('Sci-Fi')"
-            class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">
-            Sci-Fi
-          </button>
+          <button type="button" data-genre="ALL" onclick="filterByGenre('ALL')" class="nav-link active-nav px-3 py-2 rounded-lg text-sm font-semibold text-cream bg-crimson/20 border border-crimson/50 transition-all">Home</button>
+          <button type="button" data-genre="Horor" onclick="filterByGenre('Horor')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">Horor</button>
+          <button type="button" data-genre="Action" onclick="filterByGenre('Action')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">Action</button>
+          <button type="button" data-genre="Komedi" onclick="filterByGenre('Komedi')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">Komedi</button>
+          <button type="button" data-genre="Drama" onclick="filterByGenre('Drama')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">Drama</button>
+          <button type="button" data-genre="Sci-Fi" onclick="filterByGenre('Sci-Fi')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all">Sci-Fi</button>
         </nav>
       </div>
-
-      <!-- Right Actions (Daftar Simpan & Mobile Toggle) -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <button type="button" onclick="openSavedModal()"
-          class="flex items-center gap-2 px-3 py-2 rounded-xl bg-cream/10 hover:bg-cream/15 border border-cream/15 text-cream text-xs sm:text-sm font-semibold transition-all">
-          <iconify-icon icon="lucide:bookmark" class="text-crimson text-base"></iconify-icon>
-          <span class="hidden sm:inline">Tersimpan</span>
-          <span id="saved-count-badge" class="px-1.5 py-0.5 text-[11px] rounded-full bg-crimson text-cream font-bold">0</span>
-        </button>
-
-        <!-- Tombol Menu Mobile -->
-        <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Buka Menu"
-          class="md:hidden p-2.5 rounded-xl bg-cream/10 border border-cream/15 text-cream hover:bg-cream/20 transition-colors">
-          <iconify-icon id="mobile-menu-icon" icon="lucide:menu" class="text-xl"></iconify-icon>
-        </button>
+        <button type="button" onclick="openSavedModal()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-cream/10 hover:bg-cream/15 border border-cream/15 text-cream text-xs sm:text-sm font-semibold transition-all"><iconify-icon icon="lucide:bookmark" class="text-crimson text-base"></iconify-icon><span class="hidden sm:inline">Tersimpan</span><span id="saved-count-badge" class="px-1.5 py-0.5 text-[11px] rounded-full bg-crimson text-cream font-bold">0</span></button>
+        <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Buka Menu" class="md:hidden p-2.5 rounded-xl bg-cream/10 border border-cream/15 text-cream hover:bg-cream/20 transition-colors"><iconify-icon id="mobile-menu-icon" icon="lucide:menu" class="text-xl"></iconify-icon></button>
       </div>
     </div>
-
-    <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden bg-obsidian/98 border-b border-cream/15 px-4 pt-2 pb-4">
       <div class="grid grid-cols-3 gap-2">
-        <button type="button" data-genre="ALL" onclick="filterByGenre('ALL')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-semibold text-center bg-crimson text-cream">
-          Home
-        </button>
-        <button type="button" data-genre="Horor" onclick="filterByGenre('Horor')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">
-          Horor
-        </button>
-        <button type="button" data-genre="Action" onclick="filterByGenre('Action')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">
-          Action
-        </button>
-        <button type="button" data-genre="Komedi" onclick="filterByGenre('Komedi')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">
-          Komedi
-        </button>
-        <button type="button" data-genre="Drama" onclick="filterByGenre('Drama')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">
-          Drama
-        </button>
-        <button type="button" data-genre="Sci-Fi" onclick="filterByGenre('Sci-Fi')"
-          class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">
-          Sci-Fi
-        </button>
+        <button type="button" data-genre="ALL" onclick="filterByGenre('ALL')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-semibold text-center bg-crimson text-cream">Home</button>
+        <button type="button" data-genre="Horor" onclick="filterByGenre('Horor')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">Horor</button>
+        <button type="button" data-genre="Action" onclick="filterByGenre('Action')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">Action</button>
+        <button type="button" data-genre="Komedi" onclick="filterByGenre('Komedi')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">Komedi</button>
+        <button type="button" data-genre="Drama" onclick="filterByGenre('Drama')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">Drama</button>
+        <button type="button" data-genre="Sci-Fi" onclick="filterByGenre('Sci-Fi')" class="mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15">Sci-Fi</button>
       </div>
     </div>
   </header>
 
-  <!-- ================= HALAMAN 1: HOME VIEW ================= -->
   <main id="home-view" class="flex-1 pt-16 sm:pt-20">
-    
-    <!-- HERO BANNER: EXTRACTION 2 -->
     <section class="relative w-full min-h-[76vh] sm:min-h-[82vh] flex items-center overflow-hidden border-b border-cream/10">
-      <!-- Backdrop Image dengan Fallback -->
-      <img
-        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1800&q=85"
-        onerror="this.onerror=null;this.src='https://placehold.co/1600x900/141414/FFF2CC?text=EXTRACTION+2';"
-        alt="Extraction 2 Hero Banner"
-        class="absolute inset-0 w-full h-full object-cover object-center scale-105 opacity-75"
-      />
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1800&q=85" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/141414/FFF2CC?text=EXTRACTION+2';" alt="Extraction 2 Hero Banner" class="absolute inset-0 w-full h-full object-cover object-center scale-105 opacity-75" />
       <div class="hero-vignette absolute inset-0"></div>
-
-      <!-- Konten Hero -->
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full">
         <div class="max-w-2xl space-y-5">
-          
-          <!-- Badge Unggulan -->
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-crimson/20 border border-crimson/50 backdrop-blur-sm">
-            <span class="w-2 h-2 rounded-full bg-crimson animate-pulse"></span>
-            <span class="text-xs font-bold tracking-wider uppercase text-cream">FILM UNGGULAN • TOP #1 HARI INI</span>
-          </div>
-
-          <!-- Judul Film -->
-          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-cream uppercase leading-[1.02]">
-            EXTRACTION <span class="text-crimson">2</span>
-          </h1>
-
-          <!-- Metadata -->
-          <div class="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm font-semibold text-cream/85">
-            <span class="px-2.5 py-1 rounded-md bg-crimson text-cream font-bold">HD 4K</span>
-            <span>2023</span>
-            <span>•</span>
-            <span class="px-2.5 py-0.5 rounded-md border border-cream/30">Action • Thriller</span>
-            <span>•</span>
-            <span>122 Menit</span>
-            <span>•</span>
-            <span class="text-amber-400 flex items-center gap-1">
-              <iconify-icon icon="lucide:star"></iconify-icon> 8.4/10
-            </span>
-          </div>
-
-          <!-- Deskripsi -->
-          <p class="text-sm sm:text-base text-cream/85 leading-relaxed max-w-xl">
-            Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.
-          </p>
-
-          <!-- Tombol Aksi Utama -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-crimson/20 border border-crimson/50 backdrop-blur-sm"><span class="w-2 h-2 rounded-full bg-crimson animate-pulse"></span><span class="text-xs font-bold tracking-wider uppercase text-cream">FILM UNGGULAN • TOP #1 HARI INI</span></div>
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-cream uppercase leading-[1.02]">EXTRACTION <span class="text-crimson">2</span></h1>
+          <div class="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm font-semibold text-cream/85"><span class="px-2.5 py-1 rounded-md bg-crimson text-cream font-bold">HD 4K</span><span>2023</span><span>•</span><span class="px-2.5 py-0.5 rounded-md border border-cream/30">Action • Thriller</span><span>•</span><span>122 Menit</span><span>•</span><span class="text-amber-400 flex items-center gap-1"><iconify-icon icon="lucide:star"></iconify-icon> 8.4/10</span></div>
+          <p class="text-sm sm:text-base text-cream/85 leading-relaxed max-w-xl">Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.</p>
           <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
-            <button type="button" onclick="openPlayerPage('extraction2')"
-              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-crimson hover:bg-red-700 text-cream font-extrabold text-sm sm:text-base tracking-wide shadow-xl shadow-crimson/35 active:scale-95 transition-all">
-              <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
-              NONTON SEKARANG
-            </button>
-
-            <button type="button" onclick="toggleSaveMovie('extraction2')"
-              id="hero-save-btn"
-              class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/25 text-cream font-semibold text-sm sm:text-base transition-all">
-              <iconify-icon icon="lucide:plus" class="text-lg"></iconify-icon>
-              <span>Daftar Tonton</span>
-            </button>
+            <button type="button" onclick="openPlayerPage('extraction2')" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-crimson hover:bg-red-700 text-cream font-extrabold text-sm sm:text-base tracking-wide shadow-xl shadow-crimson/35 active:scale-95 transition-all"><iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>NONTON SEKARANG</button>
+            <button type="button" onclick="toggleSaveMovie('extraction2')" id="hero-save-btn" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/25 text-cream font-semibold text-sm sm:text-base transition-all"><iconify-icon icon="lucide:plus" class="text-lg"></iconify-icon><span>Daftar Tonton</span></button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: MOVIE PILIHAN -->
     <section id="movie-pilihan-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      
-      <!-- Header Section + Active Filter Indicator -->
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-        <div>
-          <div class="flex items-center gap-2 mb-1.5">
-            <span class="w-1.5 h-6 rounded-full bg-crimson"></span>
-            <span class="text-xs font-bold uppercase tracking-widest text-crimson">Rilis & Sorotan Terbaru</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-cream tracking-tight">
-            Movie Pilihan
-          </h2>
-        </div>
-
-        <!-- Filter Pills Cepat untuk Mobile & Desktop -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1">
-          <span id="active-filter-label" class="text-xs text-cream/70 whitespace-nowrap">Menampilkan: <strong class="text-cream">Semua Genre</strong></span>
-          <button type="button" id="reset-filter-btn" onclick="filterByGenre('ALL')"
-            class="hidden px-3 py-1 rounded-full bg-crimson/20 border border-crimson text-cream text-xs font-semibold hover:bg-crimson transition-colors">
-            Reset Filter
-          </button>
-        </div>
+        <div><div class="flex items-center gap-2 mb-1.5"><span class="w-1.5 h-6 rounded-full bg-crimson"></span><span class="text-xs font-bold uppercase tracking-widest text-crimson">Rilis & Sorotan Terbaru</span></div><h2 class="text-2xl sm:text-3xl font-extrabold text-cream tracking-tight">Movie Pilihan</h2></div>
+        <div class="flex items-center gap-2 overflow-x-auto pb-1"><span id="active-filter-label" class="text-xs text-cream/70 whitespace-nowrap">Menampilkan: <strong class="text-cream">Semua Genre</strong></span><button type="button" id="reset-filter-btn" onclick="filterByGenre('ALL')" class="hidden px-3 py-1 rounded-full bg-crimson/20 border border-crimson text-cream text-xs font-semibold hover:bg-crimson transition-colors">Reset Filter</button></div>
       </div>
-
-      <!-- Grid Kartu Movie Pilihan -->
-      <div id="movie-pilihan-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Kartu dirender secara dinamis oleh JavaScript -->
-      </div>
-
-      <!-- Empty State jika genre tidak ada di Movie Pilihan -->
-      <div id="empty-genre-state" class="hidden rounded-2xl border border-cream/15 bg-cream/5 p-10 text-center space-y-3">
-        <iconify-icon icon="lucide:film" class="text-4xl text-crimson"></iconify-icon>
-        <h3 class="text-lg font-bold text-cream">Belum ada film di kategori ini</h3>
-        <p class="text-sm text-cream/70 max-w-md mx-auto">
-          Coba pilih kategori lain seperti Action, Sci-Fi, atau Drama untuk melihat daftar Movie Pilihan terbaru.
-        </p>
-        <button type="button" onclick="filterByGenre('ALL')"
-          class="px-5 py-2.5 rounded-xl bg-crimson text-cream text-sm font-bold hover:bg-red-700 transition-colors">
-          Tampilkan Semua Film
-        </button>
-      </div>
+      <div id="movie-pilihan-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      <div id="empty-genre-state" class="hidden rounded-2xl border border-cream/15 bg-cream/5 p-10 text-center space-y-3"><iconify-icon icon="lucide:film" class="text-4xl text-crimson"></iconify-icon><h3 class="text-lg font-bold text-cream">Belum ada film di kategori ini</h3><p class="text-sm text-cream/70 max-w-md mx-auto">Coba pilih kategori lain seperti Action, Sci-Fi, atau Drama untuk melihat daftar Movie Pilihan terbaru.</p><button type="button" onclick="filterByGenre('ALL')" class="px-5 py-2.5 rounded-xl bg-crimson text-cream text-sm font-bold hover:bg-red-700 transition-colors">Tampilkan Semua Film</button></div>
     </section>
-
   </main>
 
-  <!-- ================= HALAMAN 2: VIDEO PLAYER & SIDEBAR FILM LAINNYA ================= -->
   <section id="player-view" class="hidden flex-1 pt-20 sm:pt-24 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Tombol Kembali ke Beranda -->
-      <div class="mb-5 flex items-center justify-between">
-        <button type="button" onclick="navigateHome()"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/15 text-cream text-sm font-semibold transition-all">
-          <iconify-icon icon="lucide:arrow-left" class="text-base text-crimson"></iconify-icon>
-          Kembali ke Beranda
-        </button>
-
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-cream">
-          Mode Pemutar HD
-        </span>
-      </div>
-
-      <!-- Layout 2 Kolom: Kiri (Video Player + Info) | Kanan (Sidebar Film Lainnya) -->
+      <div class="mb-5 flex items-center justify-between"><button type="button" onclick="navigateHome()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/15 text-cream text-sm font-semibold transition-all"><iconify-icon icon="lucide:arrow-left" class="text-base text-crimson"></iconify-icon>Kembali ke Beranda</button><span class="text-xs font-semibold px-3 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-cream">Mode Pemutar HD</span></div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- KOLOM KIRI: VIDEO PLAYER & DETAIL -->
         <div class="lg:col-span-8 space-y-5">
-          
-          <!-- Container Video Player -->
-          <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-cream/15 shadow-2xl shadow-black">
-            <video
-              id="main-video-player"
-              class="w-full h-full object-cover"
-              controls
-              playsinline
-              poster="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1400&q=80"
-            >
-              <source id="main-video-source" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
-              Browser Anda tidak mendukung pemutar video HTML5.
-            </video>
-          </div>
-
-          <!-- Judul, Metadata, Tombol Simpan & Bagikan -->
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-cream/15 shadow-2xl shadow-black"><video id="main-video-player" class="w-full h-full object-cover" controls playsinline poster="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1400&q=80"><source id="main-video-source" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />Browser Anda tidak mendukung pemutar video HTML5.</video></div>
           <div class="rounded-2xl bg-cream/[0.04] border border-cream/10 p-5 sm:p-6 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div class="space-y-1.5">
-                <div class="flex flex-wrap items-center gap-2">
-                  <span id="player-badge" class="px-2.5 py-0.5 rounded-md bg-crimson text-cream text-xs font-bold uppercase">
-                    FULL MOVIE • HD
-                  </span>
-                  <span id="player-meta" class="text-xs sm:text-sm text-cream/75 font-medium">
-                    2023 • Action, Thriller • 122 Menit
-                  </span>
-                </div>
-                <h1 id="player-title" class="text-2xl sm:text-4xl font-black text-cream tracking-tight">
-                  Extraction 2
-                </h1>
-              </div>
-
-              <!-- Tombol Simpan & Bagikan -->
-              <div class="flex items-center gap-2.5 shrink-0">
-                <button type="button" id="player-save-btn" onclick="toggleSaveCurrentPlayerMovie()"
-                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/20 text-cream text-sm font-semibold transition-all">
-                  <iconify-icon id="player-save-icon" icon="lucide:bookmark" class="text-base text-crimson"></iconify-icon>
-                  <span id="player-save-text">Simpan</span>
-                </button>
-
-                <button type="button" onclick="shareCurrentMovie()"
-                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-crimson hover:bg-red-700 text-cream text-sm font-semibold shadow-lg shadow-crimson/25 transition-all">
-                  <iconify-icon icon="lucide:share-2" class="text-base"></iconify-icon>
-                  <span>Bagikan</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Garis Pemisah -->
-            <div class="border-t border-cream/10 pt-4">
-              <h2 class="text-xs font-bold uppercase tracking-wider text-cream/60 mb-2">Sinopsis & Informasi</h2>
-              <p id="player-description" class="text-sm sm:text-base text-cream/85 leading-relaxed">
-                Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.
-              </p>
-            </div>
-
-            <!-- Info Platform Resmi (Tampil dinamis jika membuka film terbaru / info resmi) -->
-            <div id="player-official-box" class="hidden rounded-xl bg-crimson/10 border border-crimson/35 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-crimson">Tersedia Secara Legal</p>
-                <p class="text-sm font-bold text-cream mt-0.5">NONTON RESMI DI: Netflix, Disney+, Bioskop</p>
-              </div>
-              <button type="button" id="player-open-review-btn"
-                class="px-4 py-2 rounded-lg bg-cream text-obsidian text-xs font-extrabold hover:bg-cream/90 transition-colors self-start sm:self-auto">
-                BACA REVIEW LENGKAP
-              </button>
-            </div>
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4"><div class="space-y-1.5"><div class="flex flex-wrap items-center gap-2"><span id="player-badge" class="px-2.5 py-0.5 rounded-md bg-crimson text-cream text-xs font-bold uppercase">FULL MOVIE • HD</span><span id="player-meta" class="text-xs sm:text-sm text-cream/75 font-medium">2023 • Action, Thriller • 122 Menit</span></div><h1 id="player-title" class="text-2xl sm:text-4xl font-black text-cream tracking-tight">Extraction 2</h1></div><div class="flex items-center gap-2.5 shrink-0"><button type="button" id="player-save-btn" onclick="toggleSaveCurrentPlayerMovie()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/20 text-cream text-sm font-semibold transition-all"><iconify-icon id="player-save-icon" icon="lucide:bookmark" class="text-base text-crimson"></iconify-icon><span id="player-save-text">Simpan</span></button><button type="button" onclick="shareCurrentMovie()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-crimson hover:bg-red-700 text-cream text-sm font-semibold shadow-lg shadow-crimson/25 transition-all"><iconify-icon icon="lucide:share-2" class="text-base"></iconify-icon><span>Bagikan</span></button></div></div>
+            <div class="border-t border-cream/10 pt-4"><h2 class="text-xs font-bold uppercase tracking-wider text-cream/60 mb-2">Sinopsis & Informasi</h2><p id="player-description" class="text-sm sm:text-base text-cream/85 leading-relaxed">Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.</p></div>
+            <div id="player-official-box" class="hidden rounded-xl bg-crimson/10 border border-crimson/35 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"><div><p class="text-xs font-bold uppercase tracking-wider text-crimson">Tersedia Secara Legal</p><p class="text-sm font-bold text-cream mt-0.5">NONTON RESMI DI: Netflix, Disney+, Bioskop</p></div><button type="button" id="player-open-review-btn" class="px-4 py-2 rounded-lg bg-cream text-obsidian text-xs font-extrabold hover:bg-cream/90 transition-colors self-start sm:self-auto">BACA REVIEW LENGKAP</button></div>
           </div>
         </div>
-
-        <!-- KOLOM KANAN: SIDEBAR FILM LAINNYA -->
-        <aside class="lg:col-span-4 rounded-2xl bg-cream/[0.04] border border-cream/10 p-5 space-y-4">
-          <div class="flex items-center justify-between border-b border-cream/10 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-5 rounded-full bg-crimson"></span>
-              <h2 class="text-lg font-extrabold text-cream">Film Lainnya</h2>
-            </div>
-            <span class="text-xs text-cream/60">Rekomendasi</span>
-          </div>
-
-          <div id="sidebar-other-movies" class="space-y-3">
-            <!-- Daftar film lainnya dirender oleh JS -->
-          </div>
-        </aside>
-
+        <aside class="lg:col-span-4 rounded-2xl bg-cream/[0.04] border border-cream/10 p-5 space-y-4"><div class="flex items-center justify-between border-b border-cream/10 pb-3"><div class="flex items-center gap-2"><span class="w-1.5 h-5 rounded-full bg-crimson"></span><h2 class="text-lg font-extrabold text-cream">Film Lainnya</h2></div><span class="text-xs text-cream/60">Rekomendasi</span></div><div id="sidebar-other-movies" class="space-y-3"></div></aside>
       </div>
     </div>
   </section>
 
-  <!-- ================= MODAL REVIEW & TRAILER UNTUK FILM TERBARU ================= -->
   <div id="info-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
     <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#121212] border border-cream/20 p-5 sm:p-7 shadow-2xl space-y-5">
-      
-      <!-- Header Modal -->
-      <div class="flex items-start justify-between gap-4 border-b border-cream/10 pb-4">
-        <div>
-          <span id="modal-tag" class="inline-block px-2.5 py-0.5 rounded-md bg-crimson text-cream text-xs font-bold uppercase mb-1.5">
-            TRAILER RESMI
-          </span>
-          <h3 id="modal-title" class="text-xl sm:text-2xl font-black text-cream">
-            HEART OF THE BEAST 2026
-          </h3>
-          <p id="modal-subtitle" class="text-xs text-cream/70 mt-0.5">2026 • Action, Survival • 118 Menit</p>
-        </div>
-
-        <button type="button" onclick="closeInfoModal()" aria-label="Tutup Modal"
-          class="p-2 rounded-xl bg-cream/10 hover:bg-crimson text-cream transition-colors">
-          <iconify-icon icon="lucide:x" class="text-lg"></iconify-icon>
-        </button>
-      </div>
-
-      <!-- Konten Trailer (Jika mode Trailer) -->
-      <div id="modal-trailer-content" class="space-y-4">
-        <div class="aspect-video w-full rounded-xl overflow-hidden bg-black border border-cream/15">
-          <video id="modal-trailer-video" class="w-full h-full object-cover" controls playsinline>
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <p id="modal-trailer-desc" class="text-sm text-cream/85 leading-relaxed"></p>
-      </div>
-
-      <!-- Konten Review (Jika mode Review) -->
-      <div id="modal-review-content" class="hidden space-y-4">
-        <div class="flex items-center gap-3 p-3.5 rounded-xl bg-cream/5 border border-cream/10">
-          <div class="px-3 py-1.5 rounded-lg bg-crimson text-cream font-black text-lg" id="modal-review-score">
-            8.5 / 10
-          </div>
-          <div>
-            <p class="text-xs font-bold uppercase text-cream/60">Skor Editorial MOVIEDAY.ID</p>
-            <p class="text-sm font-semibold text-cream" id="modal-review-headline">Wajib tonton buat pecinta ketegangan!</p>
-          </div>
-        </div>
-        <div id="modal-review-body" class="text-sm text-cream/85 leading-relaxed space-y-3"></div>
-      </div>
-
-      <!-- Footer Wajib: NONTON RESMI DI -->
-      <div class="rounded-xl bg-crimson/15 border border-crimson/40 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <p class="text-[11px] font-bold uppercase tracking-wider text-crimson">Dukung Industri Film Legal</p>
-          <p class="text-xs sm:text-sm font-extrabold text-cream mt-0.5">
-            NONTON RESMI DI: Netflix, Disney+, Bioskop
-          </p>
-        </div>
-        <button type="button" onclick="closeInfoModal()"
-          class="px-4 py-2 rounded-lg bg-crimson hover:bg-red-700 text-cream text-xs font-bold transition-colors">
-          Tutup
-        </button>
-      </div>
+      <div class="flex items-start justify-between gap-4 border-b border-cream/10 pb-4"><div><span id="modal-tag" class="inline-block px-2.5 py-0.5 rounded-md bg-crimson text-cream text-xs font-bold uppercase mb-1.5">TRAILER RESMI</span><h3 id="modal-title" class="text-xl sm:text-2xl font-black text-cream">HEART OF THE BEAST 2026</h3><p id="modal-subtitle" class="text-xs text-cream/70 mt-0.5">2026 • Action, Survival • 118 Menit</p></div><button type="button" onclick="closeInfoModal()" aria-label="Tutup Modal" class="p-2 rounded-xl bg-cream/10 hover:bg-crimson text-cream transition-colors"><iconify-icon icon="lucide:x" class="text-lg"></iconify-icon></button></div>
+      <div id="modal-trailer-content" class="space-y-4"><div class="aspect-video w-full rounded-xl overflow-hidden bg-black border border-cream/15"><video id="modal-trailer-video" class="w-full h-full object-cover" controls playsinline><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" /></video></div><p id="modal-trailer-desc" class="text-sm text-cream/85 leading-relaxed"></p></div>
+      <div id="modal-review-content" class="hidden space-y-4"><div class="flex items-center gap-3 p-3.5 rounded-xl bg-cream/5 border border-cream/10"><div class="px-3 py-1.5 rounded-lg bg-crimson text-cream font-black text-lg" id="modal-review-score">8.5 / 10</div><div><p class="text-xs font-bold uppercase text-cream/60">Skor Editorial MOVIEDAY.ID</p><p class="text-sm font-semibold text-cream" id="modal-review-headline">Wajib tonton buat pecinta ketegangan!</p></div></div><div id="modal-review-body" class="text-sm text-cream/85 leading-relaxed space-y-3"></div></div>
+      <div class="rounded-xl bg-crimson/15 border border-crimson/40 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"><div><p class="text-[11px] font-bold uppercase tracking-wider text-crimson">Dukung Industri Film Legal</p><p class="text-xs sm:text-sm font-extrabold text-cream mt-0.5">NONTON RESMI DI: Netflix, Disney+, Bioskop</p></div><button type="button" onclick="closeInfoModal()" class="px-4 py-2 rounded-lg bg-crimson hover:bg-red-700 text-cream text-xs font-bold transition-colors">Tutup</button></div>
     </div>
   </div>
 
-  <!-- ================= MODAL DAFTAR FILM TERSIMPAN ================= -->
-  <div id="saved-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-    <div class="w-full max-w-lg rounded-2xl bg-[#121212] border border-cream/20 p-5 sm:p-6 shadow-2xl space-y-4">
-      <div class="flex items-center justify-between border-b border-cream/10 pb-3">
-        <div class="flex items-center gap-2">
-          <iconify-icon icon="lucide:bookmark" class="text-crimson text-xl"></iconify-icon>
-          <h3 class="text-lg font-extrabold text-cream">Film Tersimpan</h3>
-        </div>
-        <button type="button" onclick="closeSavedModal()" class="p-1.5 rounded-lg bg-cream/10 hover:bg-crimson text-cream">
-          <iconify-icon icon="lucide:x" class="text-base"></iconify-icon>
-        </button>
-      </div>
-      <div id="saved-list-container" class="space-y-2.5 max-h-80 overflow-y-auto"></div>
-    </div>
-  </div>
+  <div id="saved-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"><div class="w-full max-w-lg rounded-2xl bg-[#121212] border border-cream/20 p-5 sm:p-6 shadow-2xl space-y-4"><div class="flex items-center justify-between border-b border-cream/10 pb-3"><div class="flex items-center gap-2"><iconify-icon icon="lucide:bookmark" class="text-crimson text-xl"></iconify-icon><h3 class="text-lg font-extrabold text-cream">Film Tersimpan</h3></div><button type="button" onclick="closeSavedModal()" class="p-1.5 rounded-lg bg-cream/10 hover:bg-crimson text-cream"><iconify-icon icon="lucide:x" class="text-base"></iconify-icon></button></div><div id="saved-list-container" class="space-y-2.5 max-h-80 overflow-y-auto"></div></div></div>
 
-  <!-- ================= TOAST NOTIFICATION ================= -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 px-4 py-3 rounded-xl bg-[#181818] border border-crimson text-cream text-sm font-semibold shadow-2xl flex items-center gap-2.5">
-    <iconify-icon icon="lucide:check-circle-2" class="text-crimson text-lg"></iconify-icon>
-    <span id="toast-message">Berhasil!</span>
-  </div>
+  <div id="toast" class="fixed bottom-5 right-5 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 px-4 py-3 rounded-xl bg-[#181818] border border-crimson text-cream text-sm font-semibold shadow-2xl flex items-center gap-2.5"><iconify-icon icon="lucide:check-circle-2" class="text-crimson text-lg"></iconify-icon><span id="toast-message">Berhasil!</span></div>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="border-t border-cream/10 bg-obsidian py-8 px-4 sm:px-6 lg:px-8 mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/65">
-      <div class="flex items-center gap-2">
-        <span class="font-black text-base text-crimson">MOVIEDAY<span class="text-cream">.ID</span></span>
-        <span>• Portal Streaming Klasik & Info Film Resmi</span>
-      </div>
-      <p class="text-center sm:text-right">
-        NONTON RESMI DI: <span class="text-cream font-semibold">Netflix, Disney+, Bioskop</span>. Dukung karya sineas resmi.
-      </p>
-    </div>
-  </footer>
+  <footer class="border-t border-cream/10 bg-obsidian py-8 px-4 sm:px-6 lg:px-8 mt-auto"><div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/65"><div class="flex items-center gap-2"><span class="font-black text-base text-crimson">MOVIEDAY<span class="text-cream">.ID</span></span><span>• Portal Streaming Klasik & Info Film Resmi</span></div><p class="text-center sm:text-right">NONTON RESMI DI: <span class="text-cream font-semibold">Netflix, Disney+, Bioskop</span>. Dukung karya sineas resmi.</p></div></footer>
 
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // Database Film MOVIEDAY.ID
     const MOVIES = {
-      extraction2: {
-        id: 'extraction2',
-        title: 'Extraction 2',
-        year: '2023',
-        genres: ['Action', 'Drama'],
-        duration: '122 Menit',
-        rating: '8.4',
-        isLatest: false, // Hero banner dengan tombol NONTON SEKARANG
-        poster: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-        description:
-          'Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake (Chris Hemsworth) kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.',
-      },
-      heartOfTheBeast: {
-        id: 'heartOfTheBeast',
-        title: 'HEART OF THE BEAST 2026',
-        year: '2026',
-        genres: ['Action', 'Drama'],
-        duration: '118 Menit',
-        rating: '8.5',
-        isLatest: true,
-        poster: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
-        trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-        description:
-          'Seorang mantan tentara pasukan khusus dan anjing German Shepherd kesayangannya terdampar di pedalaman hutan belantara Alaska setelah kecelakaan pesawat kecil. Mereka harus bertahan hidup melawan cuaca ekstrem dan alam liar.',
-        reviewHeadline: 'Chemistry Manusia & Anjing yang Bikin Deg-Degan Sekaligus Terharu!',
-        reviewBody: [
-          'Bayangin kamu lagi ada di tengah hutan belantara Alaska yang dinginnya menusuk tulang, sinyal HP nol besar, dan satu-satunya yang bisa kamu andalkan cuma seekor anjing German Shepherd terlatih.',
-          'Akting pemeran utamanya totalitas banget—ekspresi kedinginan sampai perjuangan ngobatin luka sendiri terasa nyata. Chemistry antara si mantan tentara dan anjingnya beneran jadi nyawa utama film ini.',
-          'Sinematografi hutan pinus dan badai saljunya indah tapi mencekam. Meskipun tempo di tengah sempat melambat, eksekusi survival-nya super realistis dan emosional. Skor 8.5/10 dari MOVIEDAY.ID!'
-        ],
-      },
-      youCanSeeEverything: {
-        id: 'youCanSeeEverything',
-        title: 'You Can See Everything (2026)',
-        year: '2026',
-        genres: ['Horor', 'Sci-Fi'],
-        duration: '112 Menit',
-        rating: '8.1',
-        isLatest: true,
-        poster: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=800&q=80',
-        trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-        description:
-          'Setelah menjalani operasi transplantasi kornea eksperimental, seorang jurnalis foto mulai melihat bayangan peristiwa masa depan dan sosok tak kasat mata yang mengintai setiap sudut kota.',
-        reviewHeadline: 'Teror Psikologis Modern dengan Konsep Penglihatan yang Bikin Merinding!',
-        reviewBody: [
-          'You Can See Everything (2026) menggabungkan ketegangan horor supranatural dengan sentuhan fiksi ilmiah medis yang segar dan cerdas.',
-          'Alih-alih mengandalkan jumpscare murahan, film ini membangun rasa tidak nyaman lewat detail visual di sudut layar yang bikin penonton ikut curiga setiap kali kamera bergerak.',
-          'Atmosfer gelap dan desain suaranya sukses bikin bulu kuduk berdiri sepanjang 112 menit durasi film.'
-        ],
-      },
-      theOdyssey: {
-        id: 'theOdyssey',
-        title: 'The Odyssey',
-        year: '2026',
-        genres: ['Drama', 'Action', 'Sci-Fi'],
-        duration: '154 Menit',
-        rating: '9.0',
-        isLatest: true,
-        poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
-        trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
-        description:
-          'Kisah epik perjalanan pulang Raja Odysseus melintasi lautan penuh bahaya, makhluk mitologi raksasa, dan ujian kesetiaan demi kembali ke pelukan keluarganya di Ithaca.',
-        reviewHeadline: 'Mahakarya Epik Kolosal dengan Visual Skala Raksasa!',
-        reviewBody: [
-          'The Odyssey menghadirkan skala sinema epik yang megah dengan tata produksi luar biasa dan penceritaan emosional tentang kerinduan pulang.',
-          'Setiap rintangan di lautan digarap dengan ketegangan tinggi dan sinematografi layar lebar yang memanjakan mata.',
-          'Salah satu film drama petualangan paling ambisius tahun ini yang wajib disaksikan di layar berkualitas tinggi.'
-        ],
-      },
-      spiderManBrandNewDay: {
-        id: 'spiderManBrandNewDay',
-        title: 'Spider-Man: Brand New Day',
-        year: '2026',
-        genres: ['Action', 'Sci-Fi', 'Komedi'],
-        duration: '138 Menit',
-        rating: '8.8',
-        isLatest: true,
-        poster: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=800&q=80',
-        trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-        description:
-          'Memulai babak baru sebagai mahasiswa yang hidup mandiri di New York, Peter Parker harus menyeimbangkan kehidupan barunya saat ancaman sindikat teknologi tinggi mulai mengacaukan kota.',
-        reviewHeadline: 'Aksi Akrobatik Segar & Humor Khas Peter Parker Kembali Bersinar!',
-        reviewBody: [
-          'Spider-Man: Brand New Day membawa kembali nuansa pahlawan lingkungan yang membumi, penuh aksi ayunan jaring yang dinamis dan humor segar khas Peter Parker.',
-          'Konflik batin Peter yang memulai hidup dari nol terasa dekat dengan penonton muda, dipadukan dengan koreografi pertarungan jarak dekat yang solid.',
-          'Hiburan paket lengkap yang seru ditonton bareng teman maupun keluarga!'
-        ],
-      },
+      extraction2: { id: 'extraction2', title: 'Extraction 2', year: '2023', genres: ['Action', 'Drama'], duration: '122 Menit', rating: '8.4', isLatest: false, poster: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80', videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Setelah nyaris tewas dalam misi sebelumnya, tentara bayaran operasi hitam Tyler Rake (Chris Hemsworth) kembali terjun ke misi paling berbahaya: menyelamatkan keluarga gangster kejam dari penjara dengan keamanan super ketat di Georgia.' },
+      heartOfTheBeast: { id: 'heartOfTheBeast', title: 'HEART OF THE BEAST 2026', year: '2026', genres: ['Action', 'Drama'], duration: '118 Menit', rating: '8.5', isLatest: true, poster: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', description: 'Seorang mantan tentara pasukan khusus dan anjing German Shepherd kesayangannya terdampar di pedalaman hutan belantara Alaska setelah kecelakaan pesawat kecil. Mereka harus bertahan hidup melawan cuaca ekstrem dan alam liar.', reviewHeadline: 'Chemistry Manusia & Anjing yang Bikin Deg-Degan Sekaligus Terharu!', reviewBody: ['Bayangin kamu lagi ada di tengah hutan belantara Alaska yang dinginnya menusuk tulang, sinyal HP nol besar, dan satu-satunya yang bisa kamu andalkan cuma seekor anjing German Shepherd terlatih.', 'Akting pemeran utamanya totalitas banget. Chemistry antara si mantan tentara dan anjingnya beneran jadi nyawa utama film ini.', 'Sinematografi hutan pinus dan badai saljunya indah tapi mencekam. Skor 8.5/10 dari MOVIEDAY.ID!'] },
+      youCanSeeEverything: { id: 'youCanSeeEverything', title: 'You Can See Everything (2026)', year: '2026', genres: ['Horor', 'Sci-Fi'], duration: '112 Menit', rating: '8.1', isLatest: true, poster: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', description: 'Setelah menjalani operasi transplantasi kornea eksperimental, seorang jurnalis foto mulai melihat bayangan peristiwa masa depan dan sosok tak kasat mata yang mengintai setiap sudut kota.', reviewHeadline: 'Teror Psikologis Modern dengan Konsep Penglihatan yang Bikin Merinding!', reviewBody: ['You Can See Everything (2026) menggabungkan ketegangan horor supranatural dengan sentuhan fiksi ilmiah medis yang segar dan cerdas.', 'Alih-alih mengandalkan jumpscare murahan, film ini membangun rasa tidak nyaman lewat detail visual di sudut layar.', 'Atmosfer gelap dan desain suaranya sukses bikin bulu kuduk berdiri sepanjang 112 menit.'] },
+      theOdyssey: { id: 'theOdyssey', title: 'The Odyssey', year: '2026', genres: ['Drama', 'Action', 'Sci-Fi'], duration: '154 Menit', rating: '9.0', isLatest: true, poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4', description: 'Kisah epik perjalanan pulang Raja Odysseus melintasi lautan penuh bahaya, makhluk mitologi raksasa, dan ujian kesetiaan demi kembali ke pelukan keluarganya di Ithaca.', reviewHeadline: 'Mahakarya Epik Kolosal dengan Visual Skala Raksasa!', reviewBody: ['The Odyssey menghadirkan skala sinema epik yang megah dengan tata produksi luar biasa dan penceritaan emosional tentang kerinduan pulang.', 'Setiap rintangan di lautan digarap dengan ketegangan tinggi dan sinematografi layar lebar yang memanjakan mata.', 'Salah satu film drama petualangan paling ambisius tahun ini.'] },
+      spiderManBrandNewDay: { id: 'spiderManBrandNewDay', title: 'Spider-Man: Brand New Day', year: '2026', genres: ['Action', 'Sci-Fi', 'Komedi'], duration: '138 Menit', rating: '8.8', isLatest: true, poster: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', description: 'Memulai babak baru sebagai mahasiswa yang hidup mandiri di New York, Peter Parker harus menyeimbangkan kehidupan barunya saat ancaman sindikat teknologi tinggi mulai mengacaukan kota.', reviewHeadline: 'Aksi Akrobatik Segar & Humor Khas Peter Parker Kembali Bersinar!', reviewBody: ['Spider-Man: Brand New Day membawa kembali nuansa pahlawan lingkungan yang membumi, penuh aksi ayunan jaring yang dinamis dan humor segar khas Peter Parker.', 'Konflik batin Peter yang memulai hidup dari nol terasa dekat dengan penonton muda.', 'Hiburan paket lengkap yang seru ditonton bareng teman maupun keluarga!'] },
+      theMongoose: { id: 'theMongoose', title: 'The Mongoose (2026)', year: '2026', genres: ['Action', 'Drama'], duration: '99 Menit', rating: '6.4', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/c/cc/The_Mongoose_poster.jpg', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Liam Neeson jadi pahlawan perang yang dituduh berkhianat. Kejar-kejaran mobil lintas negara yang disiarkan TV, dibantu pasukan elitnya.', reviewHeadline: 'Kejar-kejaran Mobil Paling Gila Tahun Ini!', reviewBody: ['Aksi kejar-kejaran mobil lintas negara yang disiarkan langsung di TV. Liam Neeson tampil total sebagai pahlawan yang diburu polisi tapi didukung rakyat.', 'Ceritanya sederhana tapi tegang dari awal sampai akhir. Cocok buat pecinta film action kejar-kejaran. Skor 6.4/10 dari MOVIEDAY.ID!'] },
+      apocalypseZ: { id: 'apocalypseZ', title: 'Apocalypse Z: New World (2026)', year: '2026', genres: ['Horor', 'Action'], duration: '96 Menit', rating: '6.1', isLatest: true, poster: 'https://images.unsplash.com/photo-1509557965875-b88c97052f0e?auto=format&fit=crop&w=800&q=80', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Kepulauan Canary jadi tempat aman terakhir di Eropa dari virus TSJ. Misi cari perbekalan ke daratan berubah jadi pertarungan hidup mati melawan zombie.', reviewHeadline: 'Zombie Spanyol Kembali Lebih Brutal!', reviewBody: ['Sekuel Apocalypse Z ini lebih besar skalanya. Misi perbekalan yang berubah jadi jebakan zombie.', 'Suasana tegangnya dapat banget, apalagi pas di daratan yang sudah dikuasai zombie. Skor 6.1/10 dari MOVIEDAY.ID!'] },
+      extraction2020: { id: 'extraction2020', title: 'Extraction (2020)', year: '2020', genres: ['Action', 'Drama'], duration: '117 Menit', rating: '7.6', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/8/89/Extraction_%282020_film%29.png', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Tyler Rake, tentara bayaran paling tangguh, ditugaskan menyelamatkan anak gembong narkoba yang diculik di Bangladesh.', reviewHeadline: 'Aksi One-Shot 12 Menit Yang Legendaris!', reviewBody: ['Adegan aksi one-shot 12 menit di Extraction masih jadi salah satu yang terbaik di Netflix.', 'Chris Hemsworth tampil brutal dan emosional. Film action wajib tonton. Skor 7.6/10 dari MOVIEDAY.ID!'] },
+      mutiny: { id: 'mutiny', title: 'Mutiny (2026)', year: '2026', genres: ['Action', 'Drama'], duration: '118 Menit', rating: '7.0', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/d/d3/Mutiny_poster.jpeg', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Jason Statham jadi kepala keamanan miliarder yang dijebak membunuh bosnya. Dia menyusup ke kapal kargo dan membongkar konspirasi internasional.', reviewHeadline: 'Jason Statham Vs Konspirasi Di Atas Kapal!', reviewBody: ['Mutiny adalah film Jason Statham banget: baku hantam, kejar-kejaran, dan satu orang melawan banyak musuh di kapal kargo.', 'Aksinya padat dan tidak bertele-tele. Skor 7.0/10 dari MOVIEDAY.ID!'] },
+      transporter3: { id: 'transporter3', title: 'Transporter 3 (2008)', year: '2008', genres: ['Action', 'Drama'], duration: '104 Menit', rating: '6.1', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/3/3c/Transporter_3_poster.jpg', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'Frank Martin harus mengantar Valentina, putri pejabat Ukraina yang diculik, dari Marseille ke Odessa. Kalau telat, gelang di tangannya meledak.', reviewHeadline: 'Klasik! Frank Martin Dengan Gelang Bom!', reviewBody: ['Transporter 3 adalah film action klasik Jason Statham. Mobil kencang, aksi brutal, dan misi yang mustahil.', 'Wajib nonton buat yang kangen film action tahun 2000-an. Skor 6.1/10 dari MOVIEDAY.ID!'] },
+      johnWick4: { id: 'johnWick4', title: 'John Wick: Chapter 4 (2023)', year: '2023', genres: ['Action', 'Drama'], duration: '169 Menit', rating: '7.7', isLatest: true, poster: 'https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg', trailerUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', description: 'John Wick menemukan jalan untuk mengalahkan High Table. Dia harus melawan musuh baru dari New York, Osaka, Berlin sampai Paris.', reviewHeadline: 'Mahakarya Action! Adegan Tangga Paris Legendaris!', reviewBody: ['John Wick 4 adalah puncak dari seri John Wick. Aksi gun-fu paling gila, dari Osaka sampai Paris.', 'Durasi 169 menit terasa cepat karena aksinya non-stop. Skor 7.7/10 dari MOVIEDAY.ID!'] },
     };
 
-    // Urutan kartu di section "Movie Pilihan"
-    const MOVIE_PILIHAN_IDS = [
-      'heartOfTheBeast',
-      'youCanSeeEverything',
-      'theOdyssey',
-      'spiderManBrandNewDay',
-    ];
+    const MOVIE_PILIHAN_IDS = ['heartOfTheBeast','youCanSeeEverything','theOdyssey','spiderManBrandNewDay','theMongoose','apocalypseZ','extraction2020','mutiny','transporter3','johnWick4'];
 
-    // State aplikasi
     let activeGenre = 'ALL';
     let currentPlayerMovieId = 'extraction2';
     let savedMovies = JSON.parse(localStorage.getItem('movieday_saved') || '[]');
 
-    // Render Kartu Movie Pilihan
     function renderMoviePilihan() {
       const grid = document.getElementById('movie-pilihan-grid');
       const emptyState = document.getElementById('empty-genre-state');
       grid.innerHTML = '';
-
-      const filteredIds = MOVIE_PILIHAN_IDS.filter((id) => {
-        if (activeGenre === 'ALL') return true;
-        return MOVIES[id].genres.includes(activeGenre);
-      });
-
-      if (filteredIds.length === 0) {
-        emptyState.classList.remove('hidden');
-        return;
-      } else {
-        emptyState.classList.add('hidden');
-      }
-
+      const filteredIds = MOVIE_PILIHAN_IDS.filter((id) => { if (activeGenre === 'ALL') return true; return MOVIES[id].genres.includes(activeGenre); });
+      if (filteredIds.length === 0) { emptyState.classList.remove('hidden'); return; } else { emptyState.classList.add('hidden'); }
       filteredIds.forEach((id) => {
         const movie = MOVIES[id];
         const card = document.createElement('article');
-        card.className =
-          'card-hover group rounded-2xl overflow-hidden bg-[#121212] border border-cream/10 flex flex-col justify-between';
-
+        card.className = 'card-hover group rounded-2xl overflow-hidden bg-[#121212] border border-cream/10 flex flex-col justify-between';
         card.innerHTML = `
-          <div><!-- 5. THE MONGOOSE -->
-<div class="card">
-  <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/The_Mongoose_poster.jpg" alt="The Mongoose">
-  <h3>The Mongoose (2026)</h3>
-  <p>Liam Neeson jadi pahlawan perang yang dituduh berkhianat. Kejar-kejaran mobil lintas negara yang disiarkan TV, dibantu pasukan elitnya.</p>
-  <div class="btn-group">
-    <a href="artikel-5.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/results?search_query=The+Mongoose+2026+trailer" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-
-<!-- 6. APOCALYPSE Z: NEW WORLD -->
-<div class="card">
-  <img src="https://image.tmdb.org/t/p/w500/1C8e9x8V8YkQZ3Z8X9X9X9X9X9.jpg" alt="Apocalypse Z New World">
-  <h3>Apocalypse Z: New World (2026)</h3>
-  <p>Kepulauan Canary jadi tempat aman terakhir di Eropa dari virus TSJ. Misi cari perbekalan ke daratan berubah jadi pertarungan hidup mati melawan zombie.</p>
-  <div class="btn-group">
-    <a href="artikel-6.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/watch?v=EzDw6-q26Ig" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-
-<!-- 7. EXTRACTION -->
-<div class="card">
-  <img src="https://upload.wikimedia.org/wikipedia/en/8/89/Extraction_%282020_film%29.png" alt="Extraction">
-  <h3>Extraction (2020)</h3>
-  <p>Tyler Rake, tentara bayaran paling tangguh, ditugaskan menyelamatkan anak gembong narkoba yang diculik di Bangladesh. Misi yang hampir mustahil.</p>
-  <div class="btn-group">
-    <a href="artikel-7.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/results?search_query=Extraction+2020+trailer" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-
-<!-- 8. MUTINY -->
-<div class="card">
-  <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/Mutiny_poster.jpeg" alt="Mutiny">
-  <h3>Mutiny (2026)</h3>
-  <p>Jason Statham jadi kepala keamanan miliarder yang dijebak membunuh bosnya. Dia menyusup ke kapal kargo dan membongkar konspirasi internasional.</p>
-  <div class="btn-group">
-    <a href="artikel-8.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/results?search_query=Mutiny+2026+trailer" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-
-<!-- 9. TRANSPORTER 3 -->
-<div class="card">
-  <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Transporter_3_poster.jpg" alt="Transporter 3">
-  <h3>Transporter 3 (2008)</h3>
-  <p>Frank Martin kembali. Kali ini dia harus mengantar Valentina, putri pejabat Ukraina yang diculik, dari Marseille ke Odessa. Kalau telat, gelang di tangannya meledak.</p>
-  <div class="btn-group">
-    <a href="artikel-9.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/results?search_query=Transporter+3+trailer" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-
-<!-- 10. JOHN WICK: CHAPTER 4 -->
-<div class="card">
-  <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg" alt="John Wick Chapter 4">
-  <h3>John Wick: Chapter 4 (2023)</h3>
-  <p>John Wick menemukan jalan untuk mengalahkan High Table. Tapi dia harus melawan musuh baru dengan aliansi global, dari New York, Osaka, Berlin sampai Paris.</p>
-  <div class="btn-group">
-    <a href="artikel-10.html" class="btn-review">LIHAT REVIEW</a>
-    <a href="https://www.youtube.com/results?search_query=John+Wick+Chapter+4+trailer" target="_blank" class="btn-trailer">LIHAT TRAILER</a>
-  </div>
-</div>
-            <!-- Poster Film -->
+          <div>
             <div class="relative aspect-[16/10] overflow-hidden bg-black">
-              <img
-                src="${movie.poster}"
-                onerror="this.onerror=null;this.src='https://placehold.co/800x500/181818/FFF2CC?text=${encodeURIComponent(movie.title)}';"
-                alt="${movie.title}"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src="${movie.poster}" onerror="this.onerror=null;this.src='https://placehold.co/800x500/181818/FFF2CC?text=${encodeURIComponent(movie.title)}';" alt="${movie.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-black/30"></div>
-
-              <!-- Badge Rilis Terbaru & Rating -->
-              <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                <span class="px-2.5 py-1 rounded-md bg-crimson text-cream text-[11px] font-extrabold tracking-wide uppercase shadow">
-                  FILM TERBARU
-                </span>
-                <span class="px-2 py-1 rounded-md bg-black/80 border border-cream/20 text-amber-400 text-xs font-bold flex items-center gap-1">
-                  <iconify-icon icon="lucide:star"></iconify-icon> ${movie.rating}
-                </span>
-              </div>
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2"><span class="px-2.5 py-1 rounded-md bg-crimson text-cream text-[11px] font-extrabold tracking-wide uppercase shadow">FILM TERBARU</span><span class="px-2 py-1 rounded-md bg-black/80 border border-cream/20 text-amber-400 text-xs font-bold flex items-center gap-1"><iconify-icon icon="lucide:star"></iconify-icon> ${movie.rating}</span></div>
             </div>
-
-            <!-- Konten Kartu -->
-            <div class="p-4 sm:p-5 space-y-2.5">
-              <div class="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-cream/70">
-                <span>${movie.year}</span>
-                <span>•</span>
-                <span>${movie.genres.join(', ')}</span>
-                <span>•</span>
-                <span>${movie.duration}</span>
-              </div>
-
-              <h3 class="text-lg font-extrabold text-cream leading-snug group-hover:text-crimson transition-colors">
-                ${movie.title}
-              </h3>
-
-              <p class="text-xs text-cream/75 line-clamp-3 leading-relaxed">
-                ${movie.description}
-              </p>
-            </div>
+            <div class="p-4 sm:p-5 space-y-2.5"><div class="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-cream/70"><span>${movie.year}</span><span>•</span><span>${movie.genres.join(', ')}</span><span>•</span><span>${movie.duration}</span></div><h3 class="text-lg font-extrabold text-cream leading-snug group-hover:text-crimson transition-colors">${movie.title}</h3><p class="text-xs text-cream/75 line-clamp-3 leading-relaxed">${movie.description}</p></div>
           </div>
-
-          <!-- Tombol Khusus Film Terbaru (TANPA tombol nonton, diganti LIHAT TRAILER & LIHAT REVIEW + NONTON RESMI DI) -->
-          <div class="px-4 sm:px-5 pb-5 pt-2 space-y-3">
-            <div class="grid grid-cols-2 gap-2">
-              <button type="button" onclick="openInfoModal('${movie.id}', 'trailer')"
-                class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-crimson hover:bg-red-700 text-cream text-xs font-extrabold tracking-wide transition-colors">
-                <iconify-icon icon="lucide:film" class="text-sm"></iconify-icon>
-                LIHAT TRAILER
-              </button>
-
-              <button type="button" onclick="openInfoModal('${movie.id}', 'review')"
-                class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/25 text-cream text-xs font-extrabold tracking-wide transition-colors">
-                <iconify-icon icon="lucide:file-text" class="text-sm text-crimson"></iconify-icon>
-                LIHAT REVIEW
-              </button>
-            </div>
-
-            <!-- Keterangan Resmi -->
-            <div class="rounded-xl bg-cream/[0.05] border border-cream/10 px-3 py-2 text-center">
-              <p class="text-[11px] font-bold text-cream/90 leading-snug">
-                NONTON RESMI DI: <span class="text-crimson">Netflix, Disney+, Bioskop</span>
-              </p>
-            </div>
-          </div>
+          <div class="px-4 sm:px-5 pb-5 pt-2 space-y-3"><div class="grid grid-cols-2 gap-2"><button type="button" onclick="openInfoModal('${movie.id}', 'trailer')" class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-crimson hover:bg-red-700 text-cream text-xs font-extrabold tracking-wide transition-colors"><iconify-icon icon="lucide:film" class="text-sm"></iconify-icon>LIHAT TRAILER</button><button type="button" onclick="openInfoModal('${movie.id}', 'review')" class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-cream/10 hover:bg-cream/20 border border-cream/25 text-cream text-xs font-extrabold tracking-wide transition-colors"><iconify-icon icon="lucide:file-text" class="text-sm text-crimson"></iconify-icon>LIHAT REVIEW</button></div><div class="rounded-xl bg-cream/[0.05] border border-cream/10 px-3 py-2 text-center"><p class="text-[11px] font-bold text-cream/90 leading-snug">NONTON RESMI DI: <span class="text-crimson">Netflix, Disney+, Bioskop</span></p></div></div>
         `;
-
         grid.appendChild(card);
       });
     }
 
-    // Filter Genre dari Menu Atas
     function filterByGenre(genre) {
       activeGenre = genre;
-
-      // Pastikan kembali ke halaman beranda jika sedang di halaman player
       document.getElementById('player-view').classList.add('hidden');
       document.getElementById('home-view').classList.remove('hidden');
-
-      // Update tampilan tombol navigasi desktop
-      document.querySelectorAll('.nav-link').forEach((btn) => {
-        if (btn.dataset.genre === genre) {
-          btn.className =
-            'nav-link active-nav px-3 py-2 rounded-lg text-sm font-semibold text-cream bg-crimson/20 border border-crimson/50 transition-all';
-        } else {
-          btn.className =
-            'nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all';
-        }
-      });
-
-      // Update tampilan tombol navigasi mobile
-      document.querySelectorAll('.mobile-nav-link').forEach((btn) => {
-        if (btn.dataset.genre === genre) {
-          btn.className =
-            'mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-semibold text-center bg-crimson text-cream';
-        } else {
-          btn.className =
-            'mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15';
-        }
-      });
-
-      // Update label filter
+      document.querySelectorAll('.nav-link').forEach((btn) => { if (btn.dataset.genre === genre) { btn.className = 'nav-link active-nav px-3 py-2 rounded-lg text-sm font-semibold text-cream bg-crimson/20 border border-crimson/50 transition-all'; } else { btn.className = 'nav-link px-3 py-2 rounded-lg text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 transition-all'; } });
+      document.querySelectorAll('.mobile-nav-link').forEach((btn) => { if (btn.dataset.genre === genre) { btn.className = 'mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-semibold text-center bg-crimson text-cream'; } else { btn.className = 'mobile-nav-link px-3 py-2.5 rounded-xl text-xs font-medium text-center bg-cream/5 text-cream/85 hover:bg-cream/15'; } });
       const label = document.getElementById('active-filter-label');
       const resetBtn = document.getElementById('reset-filter-btn');
-      if (genre === 'ALL') {
-        label.innerHTML = 'Menampilkan: <strong class="text-cream">Semua Genre</strong>';
-        resetBtn.classList.add('hidden');
-      } else {
-        label.innerHTML = `Genre: <strong class="text-crimson">${genre}</strong>`;
-        resetBtn.classList.remove('hidden');
-        document.getElementById('movie-pilihan-section').scrollIntoView({ behavior: 'smooth' });
-      }
-
-      // Tutup mobile menu jika terbuka
+      if (genre === 'ALL') { label.innerHTML = 'Menampilkan: <strong class="text-cream">Semua Genre</strong>'; resetBtn.classList.add('hidden'); } else { label.innerHTML = `Genre: <strong class="text-crimson">${genre}</strong>`; resetBtn.classList.remove('hidden'); document.getElementById('movie-pilihan-section').scrollIntoView({ behavior: 'smooth' }); }
       const mobileMenu = document.getElementById('mobile-menu');
-      if (!mobileMenu.classList.contains('hidden')) {
-        toggleMobileMenu();
-      }
-
+      if (!mobileMenu.classList.contains('hidden')) { toggleMobileMenu(); }
       renderMoviePilihan();
     }
-
-    function navigateHome(genre = 'ALL') {
-      const videoPlayer = document.getElementById('main-video-player');
-      videoPlayer.pause();
-      filterByGenre(genre);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Toggle Mobile Menu
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('mobile-menu-icon');
-      const isHidden = menu.classList.contains('hidden');
-      if (isHidden) {
-        menu.classList.remove('hidden');
-        icon.setAttribute('icon', 'lucide:x');
-      } else {
-        menu.classList.add('hidden');
-        icon.setAttribute('icon', 'lucide:menu');
-      }
-    }
-
-    // ================= HALAMAN KEDUA: VIDEO PLAYER & SIDEBAR =================
+    function navigateHome(genre = 'ALL') { const videoPlayer = document.getElementById('main-video-player'); videoPlayer.pause(); filterByGenre(genre); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function toggleMobileMenu() { const menu = document.getElementById('mobile-menu'); const icon = document.getElementById('mobile-menu-icon'); const isHidden = menu.classList.contains('hidden'); if (isHidden) { menu.classList.remove('hidden'); icon.setAttribute('icon', 'lucide:x'); } else { menu.classList.add('hidden'); icon.setAttribute('icon', 'lucide:menu'); } }
     function openPlayerPage(movieId = 'extraction2') {
       const movie = MOVIES[movieId] || MOVIES.extraction2;
       currentPlayerMovieId = movie.id;
-
-      // Sembunyikan Home, tampilkan Player
       document.getElementById('home-view').classList.add('hidden');
       document.getElementById('player-view').classList.remove('hidden');
-
-      // Set Video Source & Info
       const player = document.getElementById('main-video-player');
       const source = document.getElementById('main-video-source');
       const streamUrl = movie.isLatest ? movie.trailerUrl : movie.videoUrl;
-
-      player.poster = movie.poster;
-      source.src = streamUrl;
-      player.load();
-
+      player.poster = movie.poster; source.src = streamUrl; player.load();
       document.getElementById('player-title').textContent = movie.title;
       document.getElementById('player-meta').textContent = `${movie.year} • ${movie.genres.join(', ')} • ${movie.duration}`;
       document.getElementById('player-description').textContent = movie.description;
-
       const badge = document.getElementById('player-badge');
       const officialBox = document.getElementById('player-official-box');
-      if (movie.isLatest) {
-        badge.textContent = 'OFFICIAL TRAILER • HD';
-        officialBox.classList.remove('hidden');
-        document.getElementById('player-open-review-btn').onclick = () => openInfoModal(movie.id, 'review');
-      } else {
-        badge.textContent = 'FULL MOVIE • HD';
-        officialBox.classList.add('hidden');
-      }
-
-      updatePlayerSaveButton();
-      renderSidebarOtherMovies();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (movie.isLatest) { badge.textContent = 'OFFICIAL TRAILER • HD'; officialBox.classList.remove('hidden'); document.getElementById('player-open-review-btn').onclick = () => openInfoModal(movie.id, 'review'); } else { badge.textContent = 'FULL MOVIE • HD'; officialBox.classList.add('hidden'); }
+      updatePlayerSaveButton(); renderSidebarOtherMovies(); window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
     function renderSidebarOtherMovies() {
-      const container = document.getElementById('sidebar-other-movies');
-      container.innerHTML = '';
-
+      const container = document.getElementById('sidebar-other-movies'); container.innerHTML = '';
       Object.values(MOVIES).forEach((movie) => {
         if (movie.id === currentPlayerMovieId) return;
-
-        const item = document.createElement('div');
-        item.className =
-          'group rounded-xl bg-obsidian/80 hover:bg-cream/[0.06] border border-cream/10 p-2.5 flex gap-3 transition-all';
-
-        const actionHtml = movie.isLatest
-          ? `
-            <div class="flex flex-wrap items-center gap-1.5 mt-2">
-              <button type="button" onclick="openInfoModal('${movie.id}', 'trailer')"
-                class="px-2 py-1 rounded-md bg-crimson text-cream text-[10px] font-bold hover:bg-red-700 transition-colors">
-                LIHAT TRAILER
-              </button>
-              <button type="button" onclick="openInfoModal('${movie.id}', 'review')"
-                class="px-2 py-1 rounded-md bg-cream/15 text-cream text-[10px] font-bold hover:bg-cream/25 transition-colors">
-                LIHAT REVIEW
-              </button>
-            </div>
-            <p class="text-[10px] text-cream/70 mt-1.5 font-medium">
-              NONTON RESMI DI: <span class="text-crimson font-bold">Netflix, Disney+, Bioskop</span>
-            </p>
-          `
-          : `
-            <button type="button" onclick="openPlayerPage('${movie.id}')"
-              class="mt-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-crimson text-cream text-[10px] font-extrabold hover:bg-red-700 transition-colors">
-              <iconify-icon icon="lucide:play"></iconify-icon> NONTON SEKARANG
-            </button>
-          `;
-
-        item.innerHTML = `
-          <img
-            src="${movie.poster}"
-            onerror="this.onerror=null;this.src='https://placehold.co/320x200/181818/FFF2CC?text=MOVIEDAY';"
-            alt="${movie.title}"
-            class="w-24 sm:w-28 h-20 rounded-lg object-cover shrink-0 border border-cream/10"
-          />
-          <div class="flex-1 min-w-0">
-            <h4 class="text-xs sm:text-sm font-extrabold text-cream truncate group-hover:text-crimson transition-colors">
-              ${movie.title}
-            </h4>
-            <p class="text-[11px] text-cream/65 mt-0.5">${movie.year} • ${movie.genres.join(', ')}</p>
-            ${actionHtml}
-          </div>
-        `;
-
+        const item = document.createElement('div'); item.className = 'group rounded-xl bg-obsidian/80 hover:bg-cream/[0.06] border border-cream/10 p-2.5 flex gap-3 transition-all';
+        const actionHtml = movie.isLatest ? `<div class="flex flex-wrap items-center gap-1.5 mt-2"><button type="button" onclick="openInfoModal('${movie.id}', 'trailer')" class="px-2 py-1 rounded-md bg-crimson text-cream text-[10px] font-bold hover:bg-red-700 transition-colors">LIHAT TRAILER</button><button type="button" onclick="openInfoModal('${movie.id}', 'review')" class="px-2 py-1 rounded-md bg-cream/15 text-cream text-[10px] font-bold hover:bg-cream/25 transition-colors">LIHAT REVIEW</button></div><p class="text-[10px] text-cream/70 mt-1.5 font-medium">NONTON RESMI DI: <span class="text-crimson font-bold">Netflix, Disney+, Bioskop</span></p>` : `<button type="button" onclick="openPlayerPage('${movie.id}')" class="mt-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-crimson text-cream text-[10px] font-extrabold hover:bg-red-700 transition-colors"><iconify-icon icon="lucide:play"></iconify-icon> NONTON SEKARANG</button>`;
+        item.innerHTML = `<img src="${movie.poster}" onerror="this.onerror=null;this.src='https://placehold.co/320x200/181818/FFF2CC?text=MOVIEDAY';" alt="${movie.title}" class="w-24 sm:w-28 h-20 rounded-lg object-cover shrink-0 border border-cream/10" /><div class="flex-1 min-w-0"><h4 class="text-xs sm:text-sm font-extrabold text-cream truncate group-hover:text-crimson transition-colors">${movie.title}</h4><p class="text-[11px] text-cream/65 mt-0.5">${movie.year} • ${movie.genres.join(', ')}</p>${actionHtml}</div>`;
         container.appendChild(item);
       });
     }
-
-    // ================= MODAL TRAILER & REVIEW =================
     function openInfoModal(movieId, mode) {
-      const movie = MOVIES[movieId];
-      if (!movie) return;
-
+      const movie = MOVIES[movieId]; if (!movie) return;
       const modal = document.getElementById('info-modal');
-      const tag = document.getElementById('modal-tag');
-      const title = document.getElementById('modal-title');
-      const subtitle = document.getElementById('modal-subtitle');
+      document.getElementById('modal-tag').textContent = mode === 'trailer' ? 'TRAILER RESMI' : 'REVIEW FILM';
+      document.getElementById('modal-title').textContent = movie.title;
+      document.getElementById('modal-subtitle').textContent = `${movie.year} • ${movie.genres.join(', ')} • ${movie.duration}`;
       const trailerContent = document.getElementById('modal-trailer-content');
       const reviewContent = document.getElementById('modal-review-content');
       const trailerVideo = document.getElementById('modal-trailer-video');
-
-      title.textContent = movie.title;
-      subtitle.textContent = `${movie.year} • ${movie.genres.join(', ')} • ${movie.duration}`;
-
-      if (mode === 'trailer') {
-        tag.textContent = 'TRAILER RESMI';
-        trailerContent.classList.remove('hidden');
-        reviewContent.classList.add('hidden');
-        trailerVideo.poster = movie.poster;
-        trailerVideo.querySelector('source').src = movie.trailerUrl;
-        trailerVideo.load();
-        document.getElementById('modal-trailer-desc').textContent = movie.description;
-      } else {
-        tag.textContent = 'REVIEW FILM';
-        trailerVideo.pause();
-        trailerContent.classList.add('hidden');
-        reviewContent.classList.remove('hidden');
-        document.getElementById('modal-review-score').textContent = `${movie.rating} / 10`;
-        document.getElementById('modal-review-headline').textContent = movie.reviewHeadline;
-
-        const bodyEl = document.getElementById('modal-review-body');
-        bodyEl.innerHTML = movie.reviewBody.map((p) => `<p>${p}</p>`).join('');
-      }
-
+      if (mode === 'trailer') { trailerContent.classList.remove('hidden'); reviewContent.classList.add('hidden'); trailerVideo.poster = movie.poster; trailerVideo.querySelector('source').src = movie.trailerUrl; trailerVideo.load(); document.getElementById('modal-trailer-desc').textContent = movie.description; } else { trailerVideo.pause(); trailerContent.classList.add('hidden'); reviewContent.classList.remove('hidden'); document.getElementById('modal-review-score').textContent = `${movie.rating} / 10`; document.getElementById('modal-review-headline').textContent = movie.reviewHeadline; document.getElementById('modal-review-body').innerHTML = movie.reviewBody.map((p) => `<p>${p}</p>`).join(''); }
       modal.classList.remove('hidden');
     }
-
-    function closeInfoModal() {
-      const trailerVideo = document.getElementById('modal-trailer-video');
-      trailerVideo.pause();
-      document.getElementById('info-modal').classList.add('hidden');
-    }
-
-    // ================= SIMPAN & BAGIKAN =================
-    function updateSavedBadge() {
-      document.getElementById('saved-count-badge').textContent = savedMovies.length;
-      const heroBtn = document.getElementById('hero-save-btn');
-      if (heroBtn) {
-        const isSaved = savedMovies.includes('extraction2');
-        heroBtn.innerHTML = isSaved
-          ? `<iconify-icon icon="lucide:check" class="text-lg text-crimson"></iconify-icon><span>Tersimpan</span>`
-          : `<iconify-icon icon="lucide:plus" class="text-lg"></iconify-icon><span>Daftar Tonton</span>`;
-      }
-    }
-
-    function updatePlayerSaveButton() {
-      const isSaved = savedMovies.includes(currentPlayerMovieId);
-      const textEl = document.getElementById('player-save-text');
-      const iconEl = document.getElementById('player-save-icon');
-      textEl.textContent = isSaved ? 'Tersimpan' : 'Simpan';
-      iconEl.setAttribute('icon', isSaved ? 'lucide:bookmark-check' : 'lucide:bookmark');
-    }
-
-    function toggleSaveMovie(movieId) {
-      const movie = MOVIES[movieId];
-      if (!movie) return;
-
-      if (savedMovies.includes(movieId)) {
-        savedMovies = savedMovies.filter((id) => id !== movieId);
-        showToast(`"${movie.title}" dihapus dari daftar simpan.`);
-      } else {
-        savedMovies.push(movieId);
-        showToast(`"${movie.title}" disimpan ke Daftar Tonton!`);
-      }
-
-      localStorage.setItem('movieday_saved', JSON.stringify(savedMovies));
-      updateSavedBadge();
-      updatePlayerSaveButton();
-    }
-
-    function toggleSaveCurrentPlayerMovie() {
-      toggleSaveMovie(currentPlayerMovieId);
-    }
-
-    function shareCurrentMovie() {
-      const movie = MOVIES[currentPlayerMovieId] || MOVIES.extraction2;
-      const shareText = `Nonton & cek info ${movie.title} (${movie.year}) di MOVIEDAY.ID!`;
-
-      // Gunakan fallback clipboard aman untuk iframe
-      const tempInput = document.createElement('input');
-      tempInput.value = `${shareText} — ${window.location.href}`;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      try {
-        document.execCommand('copy');
-        showToast(`Tautan "${movie.title}" berhasil disalin!`);
-      } catch (err) {
-        showToast(`Siap dibagikan: ${movie.title}`);
-      }
-      document.body.removeChild(tempInput);
-    }
-
-    // Modal Daftar Tersimpan
-    function openSavedModal() {
-      const container = document.getElementById('saved-list-container');
-      container.innerHTML = '';
-
-      if (savedMovies.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-8 text-cream/65 text-sm">
-            Belum ada film yang disimpan. Klik tombol <strong>Simpan</strong> pada film favoritmu!
-          </div>
-        `;
-      } else {
-        savedMovies.forEach((id) => {
-          const movie = MOVIES[id];
-          if (!movie) return;
-          const row = document.createElement('div');
-          row.className = 'flex items-center justify-between gap-3 p-2.5 rounded-xl bg-cream/5 border border-cream/10';
-          row.innerHTML = `
-            <div class="flex items-center gap-3 min-w-0">
-              <img src="${movie.poster}" class="w-14 h-10 rounded-lg object-cover" alt="${movie.title}" />
-              <div class="min-w-0">
-                <p class="text-sm font-bold text-cream truncate">${movie.title}</p>
-                <p class="text-xs text-cream/60">${movie.year} • ${movie.genres.join(', ')}</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button type="button" onclick="closeSavedModal(); ${movie.isLatest ? `openInfoModal('${movie.id}', 'trailer')` : `openPlayerPage('${movie.id}')`}"
-                class="px-3 py-1.5 rounded-lg bg-crimson text-cream text-xs font-bold">
-                Buka
-              </button>
-              <button type="button" onclick="toggleSaveMovie('${movie.id}'); openSavedModal();"
-                class="p-1.5 rounded-lg bg-cream/10 text-cream/75 hover:text-crimson" title="Hapus">
-                <iconify-icon icon="lucide:trash-2"></iconify-icon>
-              </button>
-            </div>
-          `;
-          container.appendChild(row);
-        });
-      }
-
-      document.getElementById('saved-modal').classList.remove('hidden');
-    }
-
-    function closeSavedModal() {
-      document.getElementById('saved-modal').classList.add('hidden');
-    }
-
-    // Toast Helper
+    function closeInfoModal() { document.getElementById('modal-trailer-video').pause(); document.getElementById('info-modal').classList.add('hidden'); }
+    function updateSavedBadge() { document.getElementById('saved-count-badge').textContent = savedMovies.length; const heroBtn = document.getElementById('hero-save-btn'); if (heroBtn) { const isSaved = savedMovies.includes('extraction2'); heroBtn.innerHTML = isSaved ? `<iconify-icon icon="lucide:check" class="text-lg text-crimson"></iconify-icon><span>Tersimpan</span>` : `<iconify-icon icon="lucide:plus" class="text-lg"></iconify-icon><span>Daftar Tonton</span>`; } }
+    function updatePlayerSaveButton() { const isSaved = savedMovies.includes(currentPlayerMovieId); document.getElementById('player-save-text').textContent = isSaved ? 'Tersimpan' : 'Simpan'; document.getElementById('player-save-icon').setAttribute('icon', isSaved ? 'lucide:bookmark-check' : 'lucide:bookmark'); }
+    function toggleSaveMovie(movieId) { const movie = MOVIES[movieId]; if (!movie) return; if (savedMovies.includes(movieId)) { savedMovies = savedMovies.filter((id) => id !== movieId); showToast(`"${movie.title}" dihapus dari daftar simpan.`); } else { savedMovies.push(movieId); showToast(`"${movie.title}" disimpan ke Daftar Tonton!`); } localStorage.setItem('movieday_saved', JSON.stringify(savedMovies)); updateSavedBadge(); updatePlayerSaveButton(); }
+    function toggleSaveCurrentPlayerMovie() { toggleSaveMovie(currentPlayerMovieId); }
+    function shareCurrentMovie() { const movie = MOVIES[currentPlayerMovieId] || MOVIES.extraction2; const shareText = `Nonton & cek info ${movie.title} (${movie.year}) di MOVIEDAY.ID!`; const tempInput = document.createElement('input'); tempInput.value = `${shareText} — ${window.location.href}`; document.body.appendChild(tempInput); tempInput.select(); try { document.execCommand('copy'); showToast(`Tautan "${movie.title}" berhasil disalin!`); } catch (err) { showToast(`Siap dibagikan: ${movie.title}`); } document.body.removeChild(tempInput); }
+    function openSavedModal() { const container = document.getElementById('saved-list-container'); container.innerHTML = ''; if (savedMovies.length === 0) { container.innerHTML = `<div class="text-center py-8 text-cream/65 text-sm">Belum ada film yang disimpan. Klik tombol <strong>Simpan</strong> pada film favoritmu!</div>`; } else { savedMovies.forEach((id) => { const movie = MOVIES[id]; if (!movie) return; const row = document.createElement('div'); row.className = 'flex items-center justify-between gap-3 p-2.5 rounded-xl bg-cream/5 border border-cream/10'; row.innerHTML = `<div class="flex items-center gap-3 min-w-0"><img src="${movie.poster}" class="w-14 h-10 rounded-lg object-cover" alt="${movie.title}" /><div class="min-w-0"><p class="text-sm font-bold text-cream truncate">${movie.title}</p><p class="text-xs text-cream/60">${movie.year} • ${movie.genres.join(', ')}</p></div></div><div class="flex items-center gap-1.5"><button type="button" onclick="closeSavedModal(); ${movie.isLatest ? `openInfoModal('${movie.id}', 'trailer')` : `openPlayerPage('${movie.id}')`}" class="px-3 py-1.5 rounded-lg bg-crimson text-cream text-xs font-bold">Buka</button><button type="button" onclick="toggleSaveMovie('${movie.id}'); openSavedModal();" class="p-1.5 rounded-lg bg-cream/10 text-cream/75 hover:text-crimson" title="Hapus"><iconify-icon icon="lucide:trash-2"></iconify-icon></button></div>`; container.appendChild(row); }); } document.getElementById('saved-modal').classList.remove('hidden'); }
+    function closeSavedModal() { document.getElementById('saved-modal').classList.add('hidden'); }
     let toastTimeout;
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toast-message').textContent = message;
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 2800);
-    }
-
-    // Inisialisasi saat halaman dimuat
-    window.addEventListener('DOMContentLoaded', () => {
-      renderMoviePilihan();
-      updateSavedBadge();
-    });
+    function showToast(message) { const toast = document.getElementById('toast'); document.getElementById('toast-message').textContent = message; toast.classList.remove('translate-y-20', 'opacity-0'); clearTimeout(toastTimeout); toastTimeout = setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0'); }, 2800); }
+    window.addEventListener('DOMContentLoaded', () => { renderMoviePilihan(); updateSavedBadge(); });
   </script>
 </body>
 </html>
